@@ -60,8 +60,8 @@ class MainActivity : AppCompatActivity() {
 
     // Initialize the game state
     private fun initializeGame() {
-        hero = Character("Victor Magtanggol", Random.nextInt(1000, 1500), Random.nextInt(1000, 1500), Random.nextInt(1, 5))
-        enemy = Character("John Cena", Random.nextInt(1000, 2000), Random.nextInt(1000, 2000), Random.nextInt(1, 5))
+        hero = Character("Victor Magtanggol", Random.nextInt(1000, 1500), Random.nextInt(100, 200), Random.nextInt(80, 150))
+        enemy = Character("John Cena", Random.nextInt(1000, 2000), Random.nextInt(1000, 2000), Random.nextInt(90, 180))
         game = Game(hero, enemy, this)
 
         attackButton.visibility = View.VISIBLE

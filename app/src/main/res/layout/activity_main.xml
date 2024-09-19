@@ -7,28 +7,31 @@
     android:padding="16dp">
 
     <!-- Image on Top Left -->
+
+    <!-- Image on Top Right -->
+
+    <!-- Status TextView (Game Stats) -->
+
     <ImageView
         android:id="@+id/imageViewLeft"
         android:layout_width="199dp"
         android:layout_height="204dp"
-        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="84dp"
         app:srcCompat="@drawable/john_cena_removebg_preview" />
 
-    <!-- Image on Top Right -->
     <ImageView
         android:id="@+id/imageViewRight"
         android:layout_width="199dp"
         android:layout_height="204dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="63dp"
+        android:layout_marginEnd="2dp"
         app:srcCompat="@drawable/victor_removebg_preview" />
 
-    <!-- Status TextView (Game Stats) -->
     <TextView
         android:id="@+id/resultTextView"
         android:layout_width="wrap_content"
