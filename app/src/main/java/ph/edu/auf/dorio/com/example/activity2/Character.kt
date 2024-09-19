@@ -5,7 +5,7 @@ class Character(val name: String, var hp: Int, var attack: Int, var defense: Int
     var level: Int = 1
 
     fun attack(target: Character): String {
-        val damage = (this.attack - target.defense)
+        val damage = (this.attack)
         target.hp -= damage
         return "${this.name} attacks for $damage damage!"
     }
