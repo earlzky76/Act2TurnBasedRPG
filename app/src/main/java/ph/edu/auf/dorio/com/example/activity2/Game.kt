@@ -2,7 +2,7 @@ package ph.edu.auf.dorio.com.example.activity2
 
 import kotlin.random.Random
 
-class Game(private val hero: Character, private var enemy: Character, private val activity: MainActivity) {
+class Game(private val hero: Character, private var enemy: Character) {
 
     init {
         spawnNewEnemy() // Initialize with a new enemy whose stats depend on hero's level
@@ -27,17 +27,14 @@ class Game(private val hero: Character, private var enemy: Character, private va
         }
         val enemyActionResult = enemyAction()
 
-        // Check if enemy is defeated
         if (!enemy.isAlive()) {
             hero.levelUp() // Level up only if the enemy is defeated
             spawnNewEnemy() // Spawn a new enemy based on hero's updated level
             return "Hero Wins! A new enemy appears!"
         }
 
-        // Check if hero is defeated (Game Over)
         return if (!hero.isAlive()) {
-            activity.disableButtons() // Disable buttons in the UI
-            "Enemy Wins! Game Over! \n${hero.getStatus()}\n${enemy.getStatus()}"
+            "Enemy Wins! \n${hero.getStatus()}\n${enemy.getStatus()}"
         } else {
             "$heroActionResult\n$enemyActionResult\n\n${hero.getStatus()}\n\n${enemy.getStatus()}"
         }
