@@ -2,13 +2,20 @@ package ph.edu.auf.dorio.com.example.activity2
 
 import kotlin.random.Random
 
-class Game(private val hero: Character, private val enemy: Character) {
+class Game(private val hero: Character, private var enemy: Character, private val activity: MainActivity) {
 
     init {
-        // Randomize enemy stats for each game
-        enemy.hp = Random.nextInt(100, 300)
-        enemy.attack = Random.nextInt(50, 250)
-        enemy.defense = Random.nextInt(30, 150)
+        spawnNewEnemy() // Initialize with a new enemy whose stats depend on hero's level
+    }
+
+    private fun randomizeEnemyStats() {
+        // Scale enemy stats based on the hero's level
+        val levelMultiplier = hero.level * 1.2  // Scale enemy stats relative to hero level (adjustable)
+
+        enemy.hp = (Random.nextInt(100, 300) * levelMultiplier).toInt()
+        enemy.attack = (Random.nextInt(50, 250) * levelMultiplier).toInt()
+        enemy.defense = (Random.nextInt(30, 150) * levelMultiplier).toInt()
+        enemy.level = (Random.nextInt(1, 5) + levelMultiplier).toInt()
     }
 
     fun playerAction(action: String): String {
@@ -16,19 +23,23 @@ class Game(private val hero: Character, private val enemy: Character) {
             "attack" -> hero.attack(enemy)
             "heal" -> hero.heal()
             "defend" -> hero.defend()
-            else -> "Invalid action"
+            else -> return "Invalid action. Please choose 'attack', 'heal', or 'defend'."
         }
+        val enemyActionResult = enemyAction()
 
+        // Check if enemy is defeated
         if (!enemy.isAlive()) {
             hero.levelUp() // Level up only if the enemy is defeated
-            return "$heroActionResult\n${enemy.name} is defeated!\n${hero.name} wins!\n${hero.getStatus()}"
+            spawnNewEnemy() // Spawn a new enemy based on hero's updated level
+            return "Hero Wins! A new enemy appears!"
         }
 
-        val enemyActionResult = enemyAction()
+        // Check if hero is defeated (Game Over)
         return if (!hero.isAlive()) {
-            "${heroActionResult}\n${enemyActionResult}\n${hero.name} is defeated!\n${enemy.name} wins!"
+            activity.disableButtons() // Disable buttons in the UI
+            "Enemy Wins! Game Over! \n${hero.getStatus()}\n${enemy.getStatus()}"
         } else {
-            "$heroActionResult\n$enemyActionResult\n${hero.getStatus()}\n${enemy.name} - HP: ${enemy.hp}"
+            "$heroActionResult\n$enemyActionResult\n\n${hero.getStatus()}\n\n${enemy.getStatus()}"
         }
     }
 
@@ -40,4 +51,12 @@ class Game(private val hero: Character, private val enemy: Character) {
             else -> "Enemy takes no action"
         }
     }
+
+    private fun spawnNewEnemy() {
+        // Scale the new enemy's stats based on the hero's level
+        randomizeEnemyStats()
+    }
 }
+
+
+

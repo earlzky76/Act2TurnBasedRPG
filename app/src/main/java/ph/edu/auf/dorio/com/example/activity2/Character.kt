@@ -5,9 +5,9 @@ class Character(val name: String, var hp: Int, var attack: Int, var defense: Int
     var level: Int = 1
 
     fun attack(target: Character): String {
-        val damage = (this.attack - target.defense).coerceAtLeast(0)
+        val damage = (this.attack - target.defense)
         target.hp -= damage
-        return "${this.name} attacks ${target.name} for $damage damage!"
+        return "${this.name} attacks for $damage damage!"
     }
 
     fun heal(): String {
@@ -21,11 +21,11 @@ class Character(val name: String, var hp: Int, var attack: Int, var defense: Int
     fun isAlive(): Boolean = hp > 0
 
     fun levelUp() {
-        level++
+        level +=1
         attack += 10
         defense += 5
         hp += 20
     }
 
-    fun getStatus(): String = "$name - HP: $hp, Attack: $attack, Defense: $defense, Level: $level"
+    fun getStatus(): String = "$name \nHP: $hp, \nAttack: $attack, \nDefense: $defense, \nLevel: $level"
 }

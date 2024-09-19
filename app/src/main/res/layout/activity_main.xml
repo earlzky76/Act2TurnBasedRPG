@@ -6,7 +6,29 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- Status TextView -->
+    <!-- Image on Top Left -->
+    <ImageView
+        android:id="@+id/imageViewLeft"
+        android:layout_width="199dp"
+        android:layout_height="204dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        app:srcCompat="@drawable/john_cena_removebg_preview" />
+
+    <!-- Image on Top Right -->
+    <ImageView
+        android:id="@+id/imageViewRight"
+        android:layout_width="199dp"
+        android:layout_height="204dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:srcCompat="@drawable/victor_removebg_preview" />
+
+    <!-- Status TextView (Game Stats) -->
     <TextView
         android:id="@+id/statusTextView"
         android:layout_width="wrap_content"
@@ -14,43 +36,36 @@
         android:text="Game Status"
         android:textSize="24sp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp" />
+        android:layout_below="@id/imageViewLeft"
+        android:layout_marginTop="16dp" />
 
     <!-- Action Buttons -->
-
     <Button
         android:id="@+id/attackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/statusTextView"
-        android:layout_marginTop="494dp"
-        android:text="Attack" />
+        android:text="Attack"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="8dp" />
 
     <Button
         android:id="@+id/defendButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/statusTextView"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="52dp"
-        android:layout_marginTop="493dp"
+        android:text="Defend"
+        android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/attackButton"
-        android:text="Defend" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <Button
         android:id="@+id/healButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/statusTextView"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="493dp"
+        android:text="Heal"
+        android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/defendButton"
-        android:text="Heal" />
+        android:layout_marginStart="8dp" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="153dp"
-        android:layout_height="wrap_content"
-        tools:srcCompat="@tools:sample/avatars" />
 </RelativeLayout>
