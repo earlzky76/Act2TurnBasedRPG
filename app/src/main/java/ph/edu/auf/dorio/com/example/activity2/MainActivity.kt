@@ -14,8 +14,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var defendButton: Button
     private lateinit var healButton: Button
 
-    private val hero = Character("Victor Magtanggol", 180, 200, 200)
-    private val enemy = Character("John Cena", Random.nextInt(100, 300), Random.nextInt(50, 250), Random.nextInt(30, 150))
+    private val hero = Character("Victor Magtanggol", Random.nextInt(1000, 1500), Random.nextInt(1000, 1500), Random.nextInt(1000, 1500))
+    private val enemy = Character("John Cena", Random.nextInt(1000, 2000), Random.nextInt(1000, 2000), Random.nextInt(1000, 1500))
     private val game = Game(hero, enemy)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         defendButton.setOnClickListener { performAction("defend") }
         healButton.setOnClickListener { performAction("heal") }
 
-        updateStatus("Game started! ${hero.name} vs ${enemy.name}\n${hero.getStatus()}\n${enemy.name} - HP: ${enemy.hp}")
+        updateStatus("Game started! \n${hero.name} vs ${enemy.name}\n${hero.getStatus()}\n${enemy.name} - HP: ${enemy.getStatus()}")
     }
 
     private fun performAction(action: String) {
